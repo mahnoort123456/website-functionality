@@ -56,8 +56,8 @@ export async function POST(request: Request): Promise<Response> {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "https://website-functionality.vercel.app/success",
-      cancel_url: "https://website-functionality.vercel.app/cart",
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
     });
 
     return new Response(
