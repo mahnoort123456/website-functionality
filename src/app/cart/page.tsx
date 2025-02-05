@@ -1,5 +1,6 @@
 
 
+
 "use client";
 
 import React, { useContext, useState } from "react";
@@ -17,10 +18,12 @@ import Link from "next/link";
 const Cart = () => {
   const { onRemove, toggleCartItemQty, totalPrice, cartItems, addToWishlist }: any = useContext(CartContext);
   const [loading, setLoading] = useState(false);
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
+
 
   const handleCheckout = async () => {
     try {
-      const response = await fetch('/api/checkout', {
+      const response = await fetch("/api/checkout", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
