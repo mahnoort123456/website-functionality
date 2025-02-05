@@ -65,12 +65,20 @@ export async function POST(request: Request): Promise<Response> {
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Stripe session error:", error);
+    if (error instanceof Error) {
+      console.error("Stripe session error:", error.message);
+      return new Response(
+        JSON.stringify({ error: "Failed to create checkout session." }),
+        { status: 500, headers: { "Content-Type": "application/json" } }
+      );
+    } else {
+      console.error("An unexpected error occurred:", error);
     return new Response(
       JSON.stringify({ error: "Failed to create checkout session." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
+}
 }
 
 
