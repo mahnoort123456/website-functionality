@@ -57,7 +57,7 @@ export async function POST(request: Request): Promise<Response> {
       success_url: `${baseUrl}/success`,
       cancel_url: `${baseUrl}/cart`,
     });
-console.log("Base URL:", baseUrl);
+
     
     return new Response(
       JSON.stringify({ id: session.id, url: session.url }),
