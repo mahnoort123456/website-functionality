@@ -1,5 +1,3 @@
-
-
 import Stripe from "stripe";
 import { z } from "zod";
 
@@ -30,13 +28,10 @@ export async function POST(request: Request): Promise<Response> {
       });
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-    if (!baseUrl) {
-      return new Response(
-        JSON.stringify({ error: "Base URL is not set." }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
-    }
+    // ✅ Dynamic Base URL (Automatically Picks Correct One)
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://website-functionality.vercel.app";
+
+    console.log("Using Base URL:", baseUrl); // Debugging Purpose
 
     const body = await request.json();
     const { cartItems } = RequestSchema.parse(body);
@@ -54,11 +49,10 @@ export async function POST(request: Request): Promise<Response> {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: `${baseUrl}/success`,
-      cancel_url: `${baseUrl}/cart`,
+      success_url: `${baseUrl}/success`,  // ✅ Dynamically set success URL
+      cancel_url: `${baseUrl}/cart`,      // ✅ Dynamically set cancel URL
     });
 
-    
     return new Response(
       JSON.stringify({ id: session.id, url: session.url }),
       { status: 200, headers: { "Content-Type": "application/json" } }
@@ -71,3 +65,4 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 }
+
