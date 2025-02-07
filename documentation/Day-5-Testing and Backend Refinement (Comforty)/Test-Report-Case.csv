@@ -1,0 +1,10 @@
+Serial No:,Test Case ID,Test Steps,Expected,Actual,Status,Severity,Assigned,Remarks
+1,TCO01,Product Listing,All products should be displayed with correct details,displayed correctly,Passed,Medium,Ameen Alam,Success
+2,TCO02,Product Detail Page,Individual product details should be displayed,displayed correctly,Passed,Medium,Ameen Alam,Success
+3,TCO03,Advanced Category Section,Products should be filter according to the selected Category,filtered correctly,Passed,Medium,Ameen Alam,Success
+4,TCO04,Reviews and Ratings,Reviews and ratings should be visible ,Visible correctit,Passed,Low,Ameen Alam,Success
+5,TCO05,Add to Cart Functionality,Products should be added to cart item,Added Successfully,Passed,Medium,Ameen Alam,Success
+6,TCO06,Wishlist Functionality,products should be added to wishlist item,Added Successfully,Passed,Medium,Ameen Alam,Success
+7,TCO07,Inventory Management,Stock information should be accurate,Accurate,Passed,Medium,Ameen Alam,Success
+8,TCO08,Authentication using Clerk,User should be able to authentication successfully,Authorized Successfully,Passed,High,Ameen Alam,Success
+9,TCO09,Shipment Functionality,Shipments process should be passed without any errors,Error,Failed,High,Ameen Alam,Needs to improvement
